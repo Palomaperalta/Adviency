@@ -1,0 +1,27 @@
+h1{
+ color: white;
+ font-family: 'Mountains of Christmas', cursive;
+}
+
+.listaregalos {
+  display: flex;
+  margin: 10px;
+  justify-content: center;
+}
+.regalos{
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  justify-content: center;
+  background-color: #7560E8;
+  font-family: 'Mountains of Christmas', cursive;
+  width: 250px;
+  height: 150px;
+  color: white;
+  font-size: 20px;
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
