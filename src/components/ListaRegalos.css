@@ -1,3 +1,10 @@
+.container{
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 h1{
  color: white;
  font-family: 'Mountains of Christmas', cursive;
@@ -7,21 +14,45 @@ h1{
   display: flex;
   margin: 10px;
   justify-content: center;
+  width: 100%;
+
 }
 .regalos{
   display: flex;
   flex-direction: column;
-  margin: 10px;
-  justify-content: center;
+  align-items: center;
   background-color: #7560E8;
   font-family: 'Mountains of Christmas', cursive;
-  width: 250px;
-  height: 150px;
   color: white;
   font-size: 20px;
+  list-style: none;
+  width: 100%;
 }
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
+.formulario > input{
+  border: 2px solid white;
+  border-radius: 4px;
+  background-color: #283690;
+  color: white;
+  margin-top: 10px;
+  height: 35px;
+  font-size: 20px;
+  font-family: 'Mountains of Christmas', cursive;
+}
+.formulario > button{
+  background-color: #283690;
+  color: white;
+  font-size: 20px;
+  height: 40px;
+  width: 75px;
+  margin: 10px;
+  cursor: pointer;
+  font-family: 'Mountains of Christmas', cursive;
+  border-color: white;
+  border-radius: 10px; 
+}
+
