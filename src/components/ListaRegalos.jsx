@@ -4,12 +4,16 @@ import './ListaRegalos.css'
 
 function ListaRegalos() {
 const [nuevoRegalo, setNuevoRegalo] = useState('')
-const [regalos, setRegalos] = useState(['Caramelos', 'Medias', 'Vitel Tone'])
-
+const [regalos, setRegalos] = useState([{name:'Caramelos', id: 0}, {name:'Medias',id: 1}, {name:'Vitel Tone', id:2}])
 
   const handleOnClick = () => {
-    setRegalos([...regalos, nuevoRegalo])
+    setRegalos([...regalos, {name: nuevoRegalo, id: regalos.length}])
     setNuevoRegalo('')
+  }
+  const handleDelete = (id) =>{
+    console.log(id)
+    const regalosNoBorrados = regalos.filter(regalo=> id !== regalo.id)
+    setRegalos(regalosNoBorrados)
   }
   return (
     <div className='container'>
@@ -21,7 +25,8 @@ const [regalos, setRegalos] = useState(['Caramelos', 'Medias', 'Vitel Tone'])
       <div className="listaregalos" >
         <ul className="regalos">
         {regalos.map(regalo =>{
-          return <li>{regalo}</li>
+          return <li key={regalo.id}>{regalo.name}
+                  <button onClick={()=>handleDelete(regalo.id)}>X</button></li>
         })}
         </ul>
       </div>
