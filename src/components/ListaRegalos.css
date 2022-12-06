@@ -55,4 +55,8 @@ h1{
   border-color: white;
   border-radius: 10px; 
 }
+.borrartodo{
+  display: flex;
+  flex-direction: column;
+}
 

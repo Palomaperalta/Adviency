@@ -15,6 +15,9 @@ const [regalos, setRegalos] = useState([{name:'Caramelos', id: 0}, {name:'Medias
     const regalosNoBorrados = regalos.filter(regalo=> id !== regalo.id)
     setRegalos(regalosNoBorrados)
   }
+   const handleDeleteAll = () =>{
+    setRegalos([])
+  }
   return (
     <div className='container'>
       <h1>Regalos:</h1>
@@ -30,6 +33,10 @@ const [regalos, setRegalos] = useState([{name:'Caramelos', id: 0}, {name:'Medias
         })}
         </ul>
       </div>
+      <div className='borrartodo'>
+        <button onClick={()=> handleDeleteAll()}>Borrar todo</button>
+      </div>
+
     </div>
   );
 }
