@@ -9,13 +9,27 @@ h1{
  color: white;
  font-family: 'Mountains of Christmas', cursive;
 }
-
+.listavacia{
+  color: white;
+  font-family: 'Mountains of Christmas', cursive;
+  font-size: 20px;
+}
 .listaregalos {
   display: flex;
   margin: 10px;
   justify-content: center;
   width: 100%;
-
+}
+.itemregalo > span {
+  margin: 40px;
+}
+.delete{
+  background-color: #283690;
+  color: white;
+  cursor: pointer;
+  width: 30px;
+  height: 20px;
+  font-weight: 700;
 }
 .regalos{
   display: flex;
@@ -58,5 +72,17 @@ h1{
 .borrartodo{
   display: flex;
   flex-direction: column;
+}
+.borrartodo > button {
+  background-color: #283690;
+  color: white;
+  font-size: 20px;
+  height: 40px;
+  width: 150px;
+  margin: 10px;
+  cursor: pointer;
+  font-family: 'Mountains of Christmas', cursive;
+  border-color: white;
+  border-radius: 10px; 
 }
 
