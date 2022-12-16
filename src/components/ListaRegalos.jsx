@@ -77,7 +77,7 @@ function ListaRegalos() {
     <div className='container'>
       <h1>Regalos:</h1>
      
-      <button onClick={() => handleModal()} className="agregarregalo">Agregar regalo</button>
+      <button onClick={() => handleModal()} className="agregarregalo" autoFocus>Agregar regalo</button>
       <Modal
         isOpen={openModal}
         onRequestClose={closeModal}
@@ -86,7 +86,7 @@ function ListaRegalos() {
         overlayClassName="overlayModal"
       >
         <form onSubmit={handleSubmit} className='formulario'>
-          <input value={nuevoRegalo} placeholder='Nombre Regalo' onChange={(e) => setNuevoRegalo(e.target.value)} type="text"/>
+          <input autoFocus value={nuevoRegalo} placeholder='Nombre Regalo' onChange={(e) => setNuevoRegalo(e.target.value)} type="text"/>
           <input value={imagenRegalo} placeholder='http:/image...' onChange={(e) => setImagenRegalo(e.target.value)} className='inputimage' type="text" ></input>
           <div className='inputnumber'>
             <input value={cantidadregalos} placeholder='cantidad' onChange={(e) => setCantidadRegalos(e.target.value)} type="number"></input>
