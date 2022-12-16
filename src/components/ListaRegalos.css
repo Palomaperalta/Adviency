@@ -42,12 +42,36 @@ h1{
   list-style: none;
   width: 100%;
 }
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+
+.formulario{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .formulario > input{
+  border: 2px solid white;
+  border-radius: 4px;
+  background-color: #283690;
+  color: white;
+  margin-top: 10px;
+  height: 35px;
+  font-size: 20px;
+  font-family: 'Mountains of Christmas', cursive;
+}
+.inputnumber > input{
+  display: flex;
+  flex-direction: column;
+  border: 2px solid white;
+  border-radius: 4px;
+  background-color: #283690;
+  color: white;
+  margin: 10px;
+  height: 35px;
+  font-size: 20px;
+  font-family: 'Mountains of Christmas', cursive;
+  width: 45px;
+}
+.inputimage{
   border: 2px solid white;
   border-radius: 4px;
   background-color: #283690;
@@ -86,3 +110,44 @@ h1{
   border-radius: 10px; 
 }
 
+.agregarregalo{
+  background-color: #283690;
+  color: white;
+  font-size: 20px;
+  height: 40px;
+  width: 150px;
+  margin: 10px;
+  cursor: pointer;
+  font-family: 'Mountains of Christmas', cursive;
+  border-color: white;
+  border-radius: 10px; 
+}
+.modal{
+  background-color: white;
+  height: 300px;
+  width: 350px;
+  padding: 10px;
+}
+.overlayModal{
+  position: fixed;
+  inset: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.formactions{
+  display: flex;
+  flex-direction:row;
+}
+.formactionsbuttons{
+   background-color: #283690;
+  color: white;
+  font-size: 20px;
+  height: 40px;
+  width: 150px;
+  margin: 10px;
+  cursor: pointer;
+  font-family: 'Mountains of Christmas', cursive;
+  border-color: white;
+  border-radius: 10px; 
+}
