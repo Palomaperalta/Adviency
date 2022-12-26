@@ -9,6 +9,7 @@ h1{
  color: white;
  font-family: 'Mountains of Christmas', cursive;
 }
+
 .listavacia{
   color: white;
   font-family: 'Mountains of Christmas', cursive;
@@ -17,60 +18,23 @@ h1{
 .listaregalos {
   display: flex;
   margin: 10px;
+  border-radius: 10px;
+  background-color: #7560E8;
   justify-content: center;
   width: 100%;
-}
-.itemregalo > span {
-  margin: 40px;
-}
-.delete{
-  background-color: #283690;
-  color: white;
-  cursor: pointer;
-  width: 30px;
-  height: 20px;
-  font-weight: 700;
 }
 .regalos{
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #7560E8;
-  font-family: 'Mountains of Christmas', cursive;
+  font-family: 'Montserrat', sans-serif;
   color: white;
   font-size: 20px;
   list-style: none;
-  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-.formulario{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.formulario > input{
-  border: 2px solid white;
-  border-radius: 4px;
-  background-color: #283690;
-  color: white;
-  margin-top: 10px;
-  height: 35px;
-  font-size: 20px;
-  font-family: 'Mountains of Christmas', cursive;
-}
-.inputnumber > input{
-  display: flex;
-  flex-direction: column;
-  border: 2px solid white;
-  border-radius: 4px;
-  background-color: #283690;
-  color: white;
-  margin: 10px;
-  height: 35px;
-  font-size: 20px;
-  font-family: 'Mountains of Christmas', cursive;
-  width: 45px;
-}
 .inputimage{
   border: 2px solid white;
   border-radius: 4px;
@@ -80,18 +44,6 @@ h1{
   height: 35px;
   font-size: 20px;
   font-family: 'Mountains of Christmas', cursive;
-}
-.formulario > button{
-  background-color: #283690;
-  color: white;
-  font-size: 20px;
-  height: 40px;
-  width: 75px;
-  margin: 10px;
-  cursor: pointer;
-  font-family: 'Mountains of Christmas', cursive;
-  border-color: white;
-  border-radius: 10px; 
 }
 .borrartodo{
   display: flex;
@@ -105,28 +57,28 @@ h1{
   width: 150px;
   margin: 10px;
   cursor: pointer;
-  font-family: 'Mountains of Christmas', cursive;
   border-color: white;
   border-radius: 10px; 
+  font-family: 'Montserrat', sans-serif;
 }
 
 .agregarregalo{
   background-color: #283690;
   color: white;
   font-size: 20px;
-  height: 40px;
+  height: 55px;
   width: 150px;
   margin: 10px;
   cursor: pointer;
-  font-family: 'Mountains of Christmas', cursive;
+ font-family: 'Montserrat', sans-serif;
   border-color: white;
   border-radius: 10px; 
 }
 .modal{
   background-color: white;
-  height: 300px;
   width: 350px;
   padding: 10px;
+  border-radius: 10px;
 }
 .overlayModal{
   position: fixed;
@@ -135,19 +87,51 @@ h1{
   justify-content: center;
   align-items: center;
 }
-.formactions{
+.total{
   display: flex;
-  flex-direction:row;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  margin: 5px;
+  background-color: #7560E8;
+  width: 160px;
+  height: 50px;
+  border-radius: 10px; 
 }
-.formactionsbuttons{
-   background-color: #283690;
+.comprar{
+  color: black;
+}
+.listaregalosprevisualizar{
+  display: flex;
+  margin: 10px;
+}
+.cerrarprevisualizar{
+  background-color: #283690;
   color: white;
   font-size: 20px;
   height: 40px;
   width: 150px;
   margin: 10px;
   cursor: pointer;
-  font-family: 'Mountains of Christmas', cursive;
   border-color: white;
   border-radius: 10px; 
+  font-family: 'Montserrat', sans-serif;
+}
+.buttonprevisualizar{
+  background-color: #283690;
+  color: white;
+  font-size: 20px;
+  height: 40px;
+  width: 150px;
+  margin: 10px;
+  cursor: pointer;
+  border-color: white;
+  border-radius: 10px; 
+  font-family: 'Montserrat', sans-serif;
+}
+.buttoncerrar{
+  color: white;
+  background-color: red;
 }

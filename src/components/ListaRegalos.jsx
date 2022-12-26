@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import './ListaRegalos.css';
-import Modal from 'react-modal'
+import AbstractModal from './AbstractModal';
+import FormRegalos from './FormRegalos';
+import ListItem from './ListItem';
+import ListItemPrevisualizar from './ListItemPrevisualizar';
 
 
 function ListaRegalos() {
@@ -18,6 +21,8 @@ function ListaRegalos() {
   const [openModal, setOpenModal] = useState(false)
   const [destinatario, setDestinatario] = useState('')
   const [editarRegaloId, setEditarRegaloId] = useState(null)
+  const [precio, setPrecio] = useState(0)
+  const [openModalPrevisualizar, setOpenModalPrevisualizar] = useState(false)
 
   const handleDelete = (id) =>{
     const regalosNoBorrados = regalos.filter(regalo=> id !== regalo.id)
@@ -34,19 +39,20 @@ function ListaRegalos() {
       if(editarRegaloId){
         const regalosEditados = regalos.map(regalo => {
           if(regalo.id === editarRegaloId){
-            return {...regalo, name: nuevoRegalo, cantidad: cantidadregalos, img: imagenRegalo, destinatario: destinatario}
+            return {...regalo, name: nuevoRegalo, cantidad: cantidadregalos, img: imagenRegalo, destinatario: destinatario, precio: precio}
           }
           return regalo
         })
         setRegalos(regalosEditados)
       }else{
-        setRegalos([...regalos, {name: nuevoRegalo, id: regalos.length + 1, cantidad: cantidadregalos, img: imagenRegalo, destinatario: destinatario }])
+        setRegalos([...regalos, {name: nuevoRegalo, id: regalos.length + 1, cantidad: cantidadregalos, img: imagenRegalo, destinatario: destinatario, precio: precio }])
       }
       setCantidadRegalos(0)
       setNuevoRegalo('')
       setDestinatario('')
       setOpenModal(false)
       setEditarRegaloId(null)
+      setPrecio(0)
     }
   }
 
@@ -57,16 +63,31 @@ function ListaRegalos() {
       setImagenRegalo(regalo.img)
       setDestinatario(regalo.destinatario)
       setEditarRegaloId(regalo.id)
+      setPrecio(regalo.precio)
     }
     setOpenModal(true)
   }
+  const handlePrevisualizar = () =>{
+    
+    setOpenModalPrevisualizar(true)
+  }
+  const closeModalPrevisualizar =(e)=>{
+    setOpenModalPrevisualizar(false)
+  }
+  const handleDuplicate = (regalo) => {
+    const regaloDuplicado = {...regalo, id: regalos.length + 1}
+    setRegalos([...regalos, regaloDuplicado])
 
-  const closeModal =(e) =>{
+    handleModal(regaloDuplicado)
+  }
+
+  const closeModal = (e) =>{
     setCantidadRegalos(0)
     setNuevoRegalo('')
     setDestinatario('')
     setOpenModal(false)
     setEditarRegaloId(null)
+    setPrecio(0)
   }
 
   useEffect(()=>{
@@ -78,39 +99,67 @@ function ListaRegalos() {
       <h1>Regalos:</h1>
      
       <button onClick={() => handleModal()} className="agregarregalo" autoFocus>Agregar regalo</button>
-      <Modal
-        isOpen={openModal}
-        onRequestClose={closeModal}
-        contentLabel="Example Modal"
-        className="modal"
-        overlayClassName="overlayModal"
+      <AbstractModal 
+        openModal={openModal}
+        closeModal={closeModal}
       >
-        <form onSubmit={handleSubmit} className='formulario'>
-          <input autoFocus value={nuevoRegalo} placeholder='Nombre Regalo' onChange={(e) => setNuevoRegalo(e.target.value)} type="text"/>
-          <input value={imagenRegalo} placeholder='http:/image...' onChange={(e) => setImagenRegalo(e.target.value)} className='inputimage' type="text" ></input>
-          <div className='inputnumber'>
-            <input value={cantidadregalos} placeholder='cantidad' onChange={(e) => setCantidadRegalos(e.target.value)} type="number"></input>
-          </div>
-          <input value={destinatario} placeholder='Nombre destinatario' onChange={(e) => setDestinatario(e.target.value)} type="text"></input>
-          <div className='formactions'>
-          <button type="submit" className='formactionsbuttons'>{editarRegaloId ? 'Editar' : 'Agregar'}</button>
-          <button onClick={closeModal}className='formactionsbuttons'>Cerrar</button>
-          </div>
-        </form>
-      </Modal>
+        <FormRegalos
+          handleSubmit={handleSubmit}
+          nuevoRegalo={nuevoRegalo}
+          imagenRegalo={imagenRegalo}
+          cantidadregalos={cantidadregalos}
+          destinatario={destinatario}
+          closeModal={closeModal}
+          editarRegaloId={editarRegaloId}
+          setNuevoRegalo={setNuevoRegalo}
+          setImagenRegalo={setImagenRegalo}
+          setCantidadRegalos={setCantidadRegalos}
+          setDestinatario={setDestinatario}
+          precio={precio}
+          setPrecio={setPrecio}
+        >  
+        </FormRegalos>
+      </AbstractModal>
       {!regalos.length ? <span className="listavacia">No hay regalos grinch! agrega algo:)</span> :
       <div className="listaregalos" >
         <ul className="regalos">
         {regalos.map(regalo =>{
-          return <li className="itemregalo" key={regalo.id}><img src={regalo.img} alt=""/><span>{regalo.name} {regalo.cantidad}</span><span>{regalo.destinatario}</span>
-                  <button className="editar" onClick={()=>handleModal(regalo)}>E</button>
-                  <button className="delete" onClick={()=>handleDelete(regalo.id)}>X</button></li>
+          return  <ListItem
+                    regalo={regalo}
+                    handleModal={handleModal}
+                    handleDelete={handleDelete}
+                    handleDuplicate={handleDuplicate}
+                  >
+                  </ListItem>
         })}
         </ul>
       </div>
       }
+      <div className='total'>Total $ {regalos.reduce((acc, regalo) =>{
+        return acc + (Number(regalo.precio) * Number(regalo.cantidad))
+      },0)}</div>
       <div className='borrartodo'>
         <button onClick={()=> handleDeleteAll()}>Borrar todo</button>
+      </div>
+      <div className='previsualizar'>
+        <button className='buttonprevisualizar' onClick={()=> handlePrevisualizar()}>Previsualizar</button>
+        <AbstractModal
+          openModal={openModalPrevisualizar}
+          closeModal={closeModalPrevisualizar}
+        >
+          <h1 className='comprar'>Comprar:</h1>
+          <div className='listaregalosprevisualizar'>
+            <ul>
+              {regalos.map(regalo =>{
+                return  <ListItemPrevisualizar
+                          regalo={regalo}
+                        >
+                        </ListItemPrevisualizar>
+              })}
+            </ul>
+          </div>
+          <button className='cerrarprevisualizar buttoncerrar' onClick={()=> closeModalPrevisualizar()}>Cerrar</button>
+        </AbstractModal>
       </div>
     </div>
   );

@@ -1,0 +1,37 @@
+li {
+  list-style: none;
+}
+
+.itemregalo > span {
+  margin: 40px;
+  font-family: 'Montserrat', sans-serif;
+}
+.actionbutton{
+  background-color: #283690;
+  color: white;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  font-weight: 700;
+  margin: 8px;
+  font-family: 'Montserrat', sans-serif;
+}
+.divimgnamedest{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+.divimgnamedest > span{
+  margin: 4px
+}
+.divimgnamedest > img{
+  width: 50px;
+  height: 50px;
+}
+.destinatario{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
