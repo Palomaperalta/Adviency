@@ -135,3 +135,26 @@ h1{
   color: white;
   background-color: red;
 }
+.sound{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  margin: 5px;
+  background-color: #7560E8;
+  width: 60px;
+  height: 50px;
+  border-radius: 10px; 
+  cursor: pointer;
+  border: none;
+}
+.sound:hover {
+  color:#7560E8;
+  background-color: white;
+  }
+.sound > svg{
+  width: 40px;
+  height: 40px;
+}

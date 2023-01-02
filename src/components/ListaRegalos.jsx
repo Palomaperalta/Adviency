@@ -1,9 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './ListaRegalos.css';
 import AbstractModal from './AbstractModal';
 import FormRegalos from './FormRegalos';
 import ListItem from './ListItem';
 import ListItemPrevisualizar from './ListItemPrevisualizar';
+import sound from '../sounds/audio.mp3';
+import { AiOutlinePlayCircle, AiOutlinePauseCircle } from 'react-icons/ai';
 
 
 function ListaRegalos() {
@@ -23,6 +25,7 @@ function ListaRegalos() {
   const [editarRegaloId, setEditarRegaloId] = useState(null)
   const [precio, setPrecio] = useState(0)
   const [openModalPrevisualizar, setOpenModalPrevisualizar] = useState(false)
+  const [playMusic, setPlayMusic] = useState(false)
 
   const handleDelete = (id) =>{
     const regalosNoBorrados = regalos.filter(regalo=> id !== regalo.id)
@@ -94,10 +97,24 @@ function ListaRegalos() {
     localStorage.setItem("regalos", JSON.stringify(regalos));
   }, [regalos])
 
+  const audioref = useRef()
+  const handlePlay = () =>{
+    
+    if(playMusic){
+      audioref.current.pause()
+    }else{
+      audioref.current.play()
+    }
+    setPlayMusic(!playMusic)
+  }
+
   return (
     <div className='container'>
       <h1>Regalos:</h1>
-     
+      <audio ref={audioref} loop> 
+        <source src={sound} type="audio/mp3" /> 
+      </audio>
+      <button className='sound' onClick={handlePlay}>{!playMusic ? <AiOutlinePlayCircle /> : <AiOutlinePauseCircle />}</button>
       <button onClick={() => handleModal()} className="agregarregalo" autoFocus>Agregar regalo</button>
       <AbstractModal 
         openModal={openModal}
