@@ -93,6 +93,9 @@ function ListaRegalos() {
     setPrecio(0)
   }
 
+  const handleImprimir = (e) =>{
+    window.print()
+  }
   useEffect(()=>{
     localStorage.setItem("regalos", JSON.stringify(regalos));
   }, [regalos])
@@ -139,7 +142,7 @@ function ListaRegalos() {
       </AbstractModal>
       {!regalos.length ? <span className="listavacia">No hay regalos grinch! agrega algo:)</span> :
       <div className="listaregalos" >
-        <ul className="regalos">
+        <ul  className="regalos">
         {regalos.map(regalo =>{
           return  <ListItem
                     regalo={regalo}
@@ -164,18 +167,21 @@ function ListaRegalos() {
           openModal={openModalPrevisualizar}
           closeModal={closeModalPrevisualizar}
         >
-          <h1 className='comprar'>Comprar:</h1>
-          <div className='listaregalosprevisualizar'>
-            <ul>
-              {regalos.map(regalo =>{
-                return  <ListItemPrevisualizar
-                          regalo={regalo}
-                        >
-                        </ListItemPrevisualizar>
-              })}
-            </ul>
+          <div id='print'>
+            <h1 className='comprar'>Comprar:</h1>
+            <div className='listaregalosprevisualizar'>
+              <ul>
+                {regalos.map(regalo =>{
+                  return  <ListItemPrevisualizar
+                            regalo={regalo}
+                          >
+                          </ListItemPrevisualizar>
+                })}
+              </ul>
+            </div>
           </div>
           <button className='cerrarprevisualizar buttoncerrar' onClick={()=> closeModalPrevisualizar()}>Cerrar</button>
+          <button className='cerrarprevisualizar' onClick={()=> handleImprimir()} >Imprimir</button>
         </AbstractModal>
       </div>
     </div>
