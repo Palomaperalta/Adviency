@@ -4,6 +4,7 @@ import AbstractModal from './AbstractModal';
 import FormRegalos from './FormRegalos';
 import ListItem from './ListItem';
 import ListItemPrevisualizar from './ListItemPrevisualizar';
+import SnowBallContainer from './SnowBallContainer';
 import sound from '../sounds/audio.mp3';
 import { AiOutlinePlayCircle, AiOutlinePauseCircle } from 'react-icons/ai';
 
@@ -112,6 +113,10 @@ function ListaRegalos() {
   }
 
   return (
+    <>
+      <SnowBallContainer>
+
+      </SnowBallContainer>
     <div className='container'>
       <h1>Regalos:</h1>
       <audio ref={audioref} loop> 
@@ -185,6 +190,7 @@ function ListaRegalos() {
         </AbstractModal>
       </div>
     </div>
+    </>
   );
 }
 
